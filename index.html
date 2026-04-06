@@ -3,71 +3,703 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARLAJAYS Promise</title>
+    <title>ARLAJAYS Promise Home Repair and Handyman Services</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #1e293b; color: white; margin: 0; padding: 20px; }
-        .container { max-width: 600px; margin: 0 auto; background: #334155; padding: 30px; border-radius: 8px; }
-        h1 { text-align: center; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input, select, textarea { width: 100%; padding: 10px; border: none; border-radius: 4px; font-family: Arial; box-sizing: border-box; }
-        textarea { min-height: 100px; resize: vertical; }
-        button { width: 100%; padding: 12px; background: #10b981; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 16px; }
-        button:hover { background: #059669; }
-        .message { padding: 10px; margin-bottom: 15px; border-radius: 4px; display: none; }
-        .success { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
-        .error { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #1e293b;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #64748b;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        .phone-link {
+            background: #3b82f6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .phone-link:hover {
+            background: #2563eb;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .button.primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .button.primary:hover {
+            background: #2563eb;
+        }
+
+        .button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .button.secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1e293b;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .how-it-works {
+            background: #f8fafc;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.5rem;
+            line-height: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: #1e293b;
+        }
+
+        .step p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.2s;
+        }
+
+        .service-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: #1e293b;
+        }
+
+        .service-card p {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .form-section {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-section h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .form-section .section-title {
+            color: white;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .form-input::placeholder, .form-textarea::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .form-select {
+            cursor: pointer;
+        }
+
+        .form-select option {
+            background: #1e293b;
+            color: white;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .form-submit:hover {
+            background: #059669;
+        }
+
+        .form-submit:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        .form-note {
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+
+        .service-areas {
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            margin: 3rem 0;
+        }
+
+        .service-areas h3 {
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #1e293b;
+        }
+
+        .area-tags {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .area-tag {
+            background: #f0f9ff;
+            border: 1px solid #bfdbfe;
+            color: #1e40af;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .trust-badges {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        .badge {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+        }
+
+        .badge-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .badge h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
+        .badge p {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .success-message {
+            display: none;
+            background: #dcfce7;
+            border: 1px solid #86efac;
+            color: #166534;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .error-message {
+            display: none;
+            background: #fee2e2;
+            border: 1px solid #fca5a5;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .form-group-row {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>ARLAJAYS Promise - Get Your Free Quote</h1>
-        <div id="success" class="message success">✓ Quote submitted! We'll contact you within 24 hours.</div>
-        <div id="error" class="message error"></div>
-        
-        <form id="quoteForm" onsubmit="submitForm(event)">
-            <div class="form-group">
-                <label>Your Name</label>
-                <input type="text" name="name" required>
+    <div class="navbar">
+        <div class="nav-container">
+            <div class="logo">ARLAJAYS Promise</div>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#how">How It Works</a>
+                <a href="#form">Get Quote</a>
+                <a href="tel:+1-844-555-0123" class="phone-link">(844) 555-0123</a>
             </div>
-            
-            <div class="form-group">
-                <label>Phone Number</label>
-                <input type="tel" name="phone" required>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="hero-container">
+            <h1>Home repairs made simple</h1>
+            <p>Fast, reliable handyman services across Northern Virginia and the DMV. Quality work at fair prices.</p>
+            <div class="hero-buttons">
+                <button class="button primary" onclick="document.querySelector('#form').scrollIntoView({behavior:'smooth'})">Get Free Quote</button>
+                <button class="button secondary" onclick="alert('Emergency services available 24/7. Call (844) 555-0123')">Emergency Service</button>
             </div>
-            
-            <div class="form-group">
-                <label>Email Address</label>
-                <input type="email" name="email" required>
+        </div>
+    </div>
+
+    <div class="stats-grid section">
+        <div class="stat-card">
+            <div class="stat-number">2,000+</div>
+            <div class="stat-label">Projects completed</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">4.9★</div>
+            <div class="stat-label">Average rating</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">24hrs</div>
+            <div class="stat-label">Average response</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">15%</div>
+            <div class="stat-label">Savings vs retail</div>
+        </div>
+    </div>
+
+    <div class="section how-it-works" id="how">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps-grid">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Tell us what you need</h3>
+                <p>Describe your project. Include photos if helpful. We respond within 24 hours.</p>
             </div>
-            
-            <div class="form-group">
-                <label>ZIP Code</label>
-                <input type="text" name="zip" required>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Get instant quote</h3>
+                <p>Fair, transparent pricing with no hidden fees. Know exactly what you'll pay.</p>
             </div>
-            
-            <div class="form-group">
-                <label>Type of Work</label>
-                <select name="service" required>
-                    <option value="">Select a service...</option>
-                    <option value="General Repairs">General Repairs</option>
-                    <option value="Bathroom Work">Bathroom Work</option>
-                    <option value="Kitchen Updates">Kitchen Updates</option>
-                    <option value="Carpentry & Trim">Carpentry & Trim</option>
-                    <option value="Electrical Basics">Electrical Basics</option>
-                    <option value="Plumbing Fixes">Plumbing Fixes</option>
-                    <option value="Flooring Prep">Flooring Prep</option>
-                    <option value="Exterior Work">Exterior Work</option>
-                </select>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Schedule service</h3>
+                <p>Pick a time that works. Same-day and next-day options available.</p>
             </div>
-            
-            <div class="form-group">
-                <label>Describe Your Project</label>
-                <textarea name="description" required></textarea>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Work gets done</h3>
+                <p>Professional crew completes your job. We clean up and follow up same day.</p>
             </div>
-            
-            <button type="submit">Get Free Quote</button>
-        </form>
+        </div>
+    </div>
+
+    <div class="section" id="services">
+        <h2 class="section-title">What We Fix</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h4>General Repairs</h4>
+                <p>Drywall repair, painting, fixture replacement, door/window fixes, caulking.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚿</div>
+                <h4>Bathroom Work</h4>
+                <p>Faucet installation, tile work, caulk replacement, vent fan repairs.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🍳</div>
+                <h4>Kitchen Updates</h4>
+                <p>Backsplash, cabinet hardware, sink installation, countertop prep.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🪟</div>
+                <h4>Carpentry & Trim</h4>
+                <p>Crown molding, baseboards, shelving, deck repairs, woodwork.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h4>Electrical Basics</h4>
+                <p>Outlet & switch installation, light fixture work, ceiling fan setup.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💧</div>
+                <h4>Plumbing Fixes</h4>
+                <p>Leak repair, valve replacement, fixture upgrades, drain cleaning.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🪜</div>
+                <h4>Flooring Prep</h4>
+                <p>Underlayment, threshold removal, floor repair, tile grout cleaning.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h4>Exterior Work</h4>
+                <p>Gutter cleaning, caulk, fence repair, deck staining, weatherproofing.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h4>Interior Design Help</h4>
+                <p>Accent walls, texture application, color consultation, planning.</p>
+            </div>
+        </div>
+
+        <div class="service-areas">
+            <h3>We serve the entire DMV & Northern Virginia</h3>
+            <div class="area-tags">
+                <span class="area-tag">Arlington</span>
+                <span class="area-tag">Alexandria</span>
+                <span class="area-tag">Falls Church</span>
+                <span class="area-tag">Fairfax</span>
+                <span class="area-tag">Leesburg</span>
+                <span class="area-tag">Reston</span>
+                <span class="area-tag">Vienna</span>
+                <span class="area-tag">Rockville</span>
+                <span class="area-tag">Washington DC</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="trust-badges section">
+        <div class="badge">
+            <div class="badge-icon">⭐</div>
+            <h4>4.9 Stars</h4>
+            <p>Rated by 1,200+ customers</p>
+        </div>
+        <div class="badge">
+            <div class="badge-icon">🛡️</div>
+            <h4>Licensed & Insured</h4>
+            <p>Full liability coverage</p>
+        </div>
+        <div class="badge">
+            <div class="badge-icon">✅</div>
+            <h4>Warranty Included</h4>
+            <p>12-month guarantee</p>
+        </div>
+        <div class="badge">
+            <div class="badge-icon">⚡</div>
+            <h4>Quick Response</h4>
+            <p>24-hour response time</p>
+        </div>
+    </div>
+
+    <div class="form-section" id="form">
+        <div class="form-container">
+            <h2 class="section-title">Get Your Free Quote</h2>
+            <div id="success-message" class="success-message">✓ Quote request submitted! We'll contact you within 24 hours.</div>
+            <div id="error-message" class="error-message"></div>
+            <form id="quote-form" onsubmit="submitForm(event)">
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label class="form-label">Your Name</label>
+                        <input type="text" class="form-input" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-input" name="phone" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">ZIP Code</label>
+                    <input type="text" class="form-input" name="zip" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Type of Work Needed</label>
+                    <select class="form-select" name="service" required>
+                        <option value="">Select a service...</option>
+                        <option value="General Repairs">General Repairs</option>
+                        <option value="Bathroom Work">Bathroom Work</option>
+                        <option value="Kitchen Updates">Kitchen Updates</option>
+                        <option value="Carpentry & Trim">Carpentry & Trim</option>
+                        <option value="Electrical Basics">Electrical Basics</option>
+                        <option value="Plumbing Fixes">Plumbing Fixes</option>
+                        <option value="Flooring Prep">Flooring Prep</option>
+                        <option value="Exterior Work">Exterior Work</option>
+                        <option value="Interior Design Help">Interior Design Help</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Describe Your Project</label>
+                    <textarea class="form-textarea" name="description" placeholder="Tell us about the work you need done..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Preferred Contact Time</label>
+                    <select class="form-select" name="timing" required>
+                        <option value="Morning">Morning (8am-12pm)</option>
+                        <option value="Afternoon">Afternoon (12pm-5pm)</option>
+                        <option value="Evening">Evening (5pm-8pm)</option>
+                        <option value="Flexible">Flexible</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="form-submit" id="submit-btn">Get Free Quote</button>
+                <p class="form-note">We'll send you an estimate within 24 hours</p>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 ARLAJAYS Promise Home Repair and Handyman Services. Licensed & Insured. Serving the DMV since 2015.</p>
     </div>
 
     <script>
@@ -75,15 +707,15 @@
 
         async function submitForm(event) {
             event.preventDefault();
-            
-            const form = document.getElementById('quoteForm');
-            const successMsg = document.getElementById('success');
-            const errorMsg = document.getElementById('error');
-            const button = form.querySelector('button');
-            
+
+            const form = document.getElementById('quote-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const successMsg = document.getElementById('success-message');
+            const errorMsg = document.getElementById('error-message');
+
             successMsg.style.display = 'none';
             errorMsg.style.display = 'none';
-            
+
             const formData = new FormData(form);
             const data = {
                 name: formData.get('name'),
@@ -92,28 +724,35 @@
                 service: formData.get('service'),
                 description: formData.get('description'),
                 zip: formData.get('zip'),
-                timestamp: new Date().toISOString()
+                timing: formData.get('timing'),
+                timestamp: new Date().toISOString(),
+                source: 'website'
             };
-            
-            button.disabled = true;
-            button.textContent = 'Submitting...';
-            
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
             try {
                 const response = await fetch(API_ENDPOINT, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
                     body: JSON.stringify(data)
                 });
-                
+
                 successMsg.style.display = 'block';
                 form.reset();
-                button.textContent = 'Get Free Quote';
-                button.disabled = false;
+                submitBtn.textContent = 'Get Free Quote';
+                submitBtn.disabled = false;
+                successMsg.scrollIntoView({ behavior: 'smooth' });
             } catch (error) {
-                errorMsg.textContent = 'Error submitting form. Please call (844) 555-0123.';
+                console.error('Error:', error);
+                errorMsg.textContent = 'Error submitting form. Please call (844) 555-0123 to submit manually.';
                 errorMsg.style.display = 'block';
-                button.textContent = 'Get Free Quote';
-                button.disabled = false;
+                submitBtn.textContent = 'Get Free Quote';
+                submitBtn.disabled = false;
+                errorMsg.scrollIntoView({ behavior: 'smooth' });
             }
         }
     </script>
